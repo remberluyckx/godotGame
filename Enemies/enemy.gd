@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
 var myname = "baddie"
-var myhurtbox = null
+@onready var myhurtbox = $Hurtbox/CollisionShape2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	myhurtbox = $Hurtbox/CollisionShape2D
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

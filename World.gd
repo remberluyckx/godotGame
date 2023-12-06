@@ -15,7 +15,8 @@ func _process(delta):
 func _on_player_shoot(bullet, direction, location):
 	print (direction)
 	var spawned_bullet = bullet.instantiate()
+	spawned_bullet.velocity = direction
 	add_child(spawned_bullet)
-	spawned_bullet.rotation = direction
+	
 	spawned_bullet.position = location
-	spawned_bullet.velocity = spawned_bullet.velocity.rotated(direction)
+	spawned_bullet.velocity = spawned_bullet.velocity
