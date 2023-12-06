@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://deb7mumrswplb"]
+
+[ext_resource type="Texture2D" uid="uid://bcupwjtqtj1qy" path="res://icon.svg" id="1_cy026"]
+[ext_resource type="Script" path="res://fireball.gd" id="1_hphx2"]
+
+[node name="Fireball" type="Area2D"]
+script = ExtResource("1_hphx2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.32, 0.3)
+texture = ExtResource("1_cy026")

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://ioc2crrqkwf8"]
+
+[ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_15sqh"]
+[ext_resource type="Texture2D" uid="uid://bcupwjtqtj1qy" path="res://icon.svg" id="1_e5cvj"]
+[ext_resource type="PackedScene" uid="uid://c6u8hj6uek7c5" path="res://Hurtboxes/hurtbox.tscn" id="2_8mvuq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8yujt"]
+size = Vector2(130, 130)
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_15sqh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(66, 65)
+texture = ExtResource("1_e5cvj")
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_8mvuq")]
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(65.25, 64.5)
+shape = SubResource("RectangleShape2D_8yujt")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="input_event" from="Hurtbox" to="." method="_on_hurtbox_input_event"]
+
+[editable path="Hurtbox"]
