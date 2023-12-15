@@ -10,6 +10,6 @@ script = ExtResource("1_5hxya")
 [node name="Player" parent="." instance=ExtResource("1_hdsie")]
 
 [node name="Enemy" parent="." instance=ExtResource("2_vcakk")]
-position = Vector2(63, 127)
+position = Vector2(371, 224)
 
 [connection signal="shoot" from="Player" to="." method="_on_player_shoot"]
