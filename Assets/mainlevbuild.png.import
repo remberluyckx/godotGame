@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btv3i2y2iop3q"
-path="res://.godot/imported/Wizard.png-f149a4f82010f5ce8868a41f5f2fd168.ctex"
+uid="uid://vjvs0socv62t"
+path="res://.godot/imported/mainlevbuild.png-cb471e1a77f7a269ec6c90fb996ebeff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Wizard.png"
-dest_files=["res://.godot/imported/Wizard.png-f149a4f82010f5ce8868a41f5f2fd168.ctex"]
+source_file="res://Assets/mainlevbuild.png"
+dest_files=["res://.godot/imported/mainlevbuild.png-cb471e1a77f7a269ec6c90fb996ebeff.ctex"]
 
 [params]
 

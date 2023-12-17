@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 400
+@export var speed = 200
 var target = position
 var attack_target = null
 var state = "Idle"

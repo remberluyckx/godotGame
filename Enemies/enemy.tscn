@@ -1,31 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://ioc2crrqkwf8"]
+[gd_scene load_steps=4 format=3 uid="uid://ioc2crrqkwf8"]
 
 [ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_15sqh"]
-[ext_resource type="Texture2D" uid="uid://bcupwjtqtj1qy" path="res://icon.svg" id="1_e5cvj"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bg161"]
-size = Vector2(134.5, 132.5)
+[ext_resource type="Texture2D" uid="uid://bcupwjtqtj1qy" path="res://Assets/icon.svg" id="1_e5cvj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwjr1"]
-size = Vector2(128, 127)
+size = Vector2(73.5, 75.5)
 
 [node name="Enemy" type="CharacterBody2D"]
 input_pickable = true
 script = ExtResource("1_15sqh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_e5cvj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.75, -0.25)
-shape = SubResource("RectangleShape2D_bg161")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -1.5)
+position = Vector2(0.25, -0.75)
 shape = SubResource("RectangleShape2D_nwjr1")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
