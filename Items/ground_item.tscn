@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6wvwxaok1soc"]
+
+[ext_resource type="Texture2D" uid="uid://dq0mcxv7fysqr" path="res://Assets/sword32.png" id="1_kfqj5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4eoir"]
+size = Vector2(31, 28)
+
+[node name="GroundItem" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_kfqj5")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -10.0
+offset_top = -16.0
+offset_right = 15.0
+offset_bottom = -4.0
+theme_override_font_sizes/normal_font_size = 7
+text = "Sword"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4eoir")

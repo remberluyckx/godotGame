@@ -3,7 +3,10 @@ extends CharacterBody2D
 var myname = "baddie"
 @onready var myhurtbox = $Area2D/CollisionShape2D
 @onready var player = get_node("../Player")
-var health = 3
+var health = 1
+var loot = preload("res://Items/ground_item.tscn")
+
+signal drop_loot(item, location)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,7 +20,6 @@ func _process(delta):
 func _on_area_2d_area_entered(area):
 	if (area.is_in_group("Projectiles")):
 		area.queue_free()
-		print("HIT")
 		health = health - 1
 
 
@@ -31,3 +33,4 @@ func die():
 		queue_free()	
 		player.state = "Idle"
 		player.attack_target = null
+		drop_loot.emit(loot, position)

@@ -1078,3 +1078,4 @@ position = Vector2(100, 238)
 position = Vector2(371, 224)
 
 [connection signal="shoot" from="Player" to="." method="_on_player_shoot"]
+[connection signal="drop_loot" from="Enemy" to="." method="_on_enemy_drop_loot"]

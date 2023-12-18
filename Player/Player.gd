@@ -13,8 +13,6 @@ var Fireball = preload("res://fireball.tscn")
 func is_enemy_clicked(point_clicked):
 	var size = attack_target.myhurtbox.shape.size;
 	var baddieposition = attack_target.position
-	print(size)
-	print(baddieposition)
 	var rectangle = Rect2(baddieposition, size)
 	return rectangle.has_point(point_clicked)
 

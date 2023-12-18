@@ -14,3 +14,9 @@ func _on_player_shoot(projectile, direction, location):
 	spawned_projectile.velocity = direction
 	add_child(spawned_projectile)
 	spawned_projectile.position = location
+
+
+func _on_enemy_drop_loot(item, location):
+	var spawned_loot = item.instantiate()
+	add_child(spawned_loot)
+	spawned_loot.position = location
