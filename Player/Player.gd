@@ -10,11 +10,11 @@ var can_attack = true
 signal shoot(projectile, direction, location)
 var Fireball = preload("res://fireball.tscn")
 
-func is_enemy_clicked(point_clicked):
-	var size = attack_target.myhurtbox.shape.size;
-	var baddieposition = attack_target.position
-	var rectangle = Rect2(baddieposition, size)
-	return rectangle.has_point(point_clicked)
+#func is_enemy_clicked(point_clicked):
+	#var size = attack_target.myhurtbox.shape.size;
+	#var baddieposition = attack_target.position
+	#var rectangle = Rect2(baddieposition, size)
+	#return rectangle.has_point(point_clicked)
 
 func _input(event):
 	if (event.is_action_pressed("LeftClick")):
@@ -36,7 +36,7 @@ func _physics_process(delta):
 		shoot.emit(Fireball, position.direction_to(attack_target.position), position)
 		attack_cooldown.start()
 		can_attack = false
-	if (state == "Moving"):
+	if (state == "Moving" || state == "Looting"):
 		move(target)
 
 func _on_timer_timeout():
