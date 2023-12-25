@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cb3lhl0jwg18i"]
+[gd_scene load_steps=15 format=3 uid="uid://cb3lhl0jwg18i"]
 
 [ext_resource type="Script" path="res://World.gd" id="1_5hxya"]
 [ext_resource type="PackedScene" uid="uid://cq68p6f5puo84" path="res://Player/player.tscn" id="1_hdsie"]
 [ext_resource type="PackedScene" uid="uid://ioc2crrqkwf8" path="res://Enemies/enemy.tscn" id="2_vcakk"]
 [ext_resource type="Texture2D" uid="uid://vjvs0socv62t" path="res://Assets/mainlevbuild.png" id="4_gwtfv"]
+[ext_resource type="PackedScene" uid="uid://r6n00ptcws0x" path="res://inventory/inventory.tscn" id="5_pms1s"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_n1ssm"]
 tile_data = PackedInt32Array(0, 1900544, 7, 65536, 1900544, 8, 131072, 1900544, 9, 196608, 1900544, 10, 262144, 1900544, 11)
@@ -1076,6 +1077,17 @@ position = Vector2(100, 238)
 
 [node name="Enemy" parent="." instance=ExtResource("2_vcakk")]
 position = Vector2(371, 224)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="InventoryInterface" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="Inventory" parent="UI/InventoryInterface" instance=ExtResource("5_pms1s")]
+layout_mode = 0
 
 [connection signal="shoot" from="Player" to="." method="_on_player_shoot"]
 [connection signal="drop_loot" from="Enemy" to="." method="_on_enemy_drop_loot"]
