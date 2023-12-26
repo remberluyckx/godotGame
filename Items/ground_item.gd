@@ -2,10 +2,13 @@ extends Area2D
 
 @onready var player = get_node("../Player")
 @onready var playerArea = get_node("../Player/Area2D")
+@export var slot_data: SlotData
+@onready var sprite_2d = $Sprite2D
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	sprite_2d.texture = slot_data.item_data.texture
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,5 +29,5 @@ func _on_area_entered(area):
 		loot()
 
 func loot():
-	#Add to player inventory
-	queue_free()
+	if player.inventory_data.pick_up_slot_data(slot_data):
+		queue_free()

@@ -6,6 +6,9 @@ var attack_target = null
 var state = "Idle"
 @onready var attack_cooldown = $Timer
 var can_attack = true
+@export var inventory_data: InventoryData
+
+signal toggle_inventory()
 
 signal shoot(projectile, direction, location)
 var Fireball = preload("res://fireball.tscn")
@@ -21,6 +24,8 @@ func _input(event):
 		target = get_global_mouse_position()
 		#look_at(target) # determines rotation
 		state = "Moving"
+	if (event.is_action_pressed("inventory")):
+		toggle_inventory.emit()
 
 func move(target):
 	velocity = position.direction_to(target) * speed

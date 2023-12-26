@@ -1,13 +1,19 @@
 extends Node2D
 
+@onready var player = $Player
+@onready var inventory_interface = $UI/InventoryInterface
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	player.toggle_inventory.connect(toggle_inventory_interface)
+	inventory_interface.set_player_inventory_data(player.inventory_data)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
+func toggle_inventory_interface():
+	inventory_interface.visible = not inventory_interface.visible
 
 func _on_player_shoot(projectile, direction, location):
 	var spawned_projectile = projectile.instantiate()
