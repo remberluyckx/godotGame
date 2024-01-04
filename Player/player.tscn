@@ -10,17 +10,17 @@ height = 50.0
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_tx10f")
 
+[node name="Timer" type="Timer" parent="."]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_ty2dr")
-
-[node name="Timer" type="Timer" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 limit_left = 0
 limit_top = 0
-limit_right = 600
-limit_bottom = 500
+limit_right = 900
+limit_bottom = 700
 
 [node name="Area2D" type="Area2D" parent="." groups=["Player"]]
 

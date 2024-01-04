@@ -5,27 +5,24 @@ extends Area2D
 @export var slot_data: SlotData
 @onready var sprite_2d = $Sprite2D
 
+enum STATE {IDLE, MOVING, ATTACKING, LOOTING}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	sprite_2d.texture = slot_data.item_data.texture
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
-
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:				
-		player.state = "Looting"
+		player.state = STATE.LOOTING
 		if (overlaps_area(playerArea)):
 			loot()
-		
-
 
 func _on_area_entered(area):
-	if (player.state == "Looting" && area.is_in_group("Player")):
+	if (player.state == STATE.LOOTING && area.is_in_group("Player")):
 		loot()
 
 func loot():

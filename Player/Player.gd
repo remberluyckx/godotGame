@@ -1,47 +1,29 @@
-extends CharacterBody2D
+extends Character
 
-@export var speed = 200
-var target = position
-var attack_target = null
-var state = "Idle"
-@onready var attack_cooldown = $Timer
-var can_attack = true
+#var target = position
 @export var inventory_data: InventoryData
+var Fireball = preload("res://Projectiles/fireball.tscn")
 
 signal toggle_inventory()
 
-signal shoot(projectile, direction, location)
-var Fireball = preload("res://fireball.tscn")
 
-#func is_enemy_clicked(point_clicked):
-	#var size = attack_target.myhurtbox.shape.size;
-	#var baddieposition = attack_target.position
-	#var rectangle = Rect2(baddieposition, size)
-	#return rectangle.has_point(point_clicked)
+func _ready():
+	attack_cooldown = $Timer
 
 func _input(event):
 	if (event.is_action_pressed("LeftClick")):
 		target = get_global_mouse_position()
 		#look_at(target) # determines rotation
-		state = "Moving"
+		state = STATE.MOVING
 	if (event.is_action_pressed("inventory")):
 		toggle_inventory.emit()
 
-func move(target):
-	velocity = position.direction_to(target) * speed
-	if position.distance_to(target) > 10:
-		move_and_slide()	
-		var collision = get_slide_collision(0)
-		if (collision):
-			print("Collided with: ", collision.get_collider().name)
-	
-
 func _physics_process(delta):	
-	if (state == "Attacking" && can_attack):
+	if (state == STATE.ATTACKING && can_attack):
 		shoot.emit(Fireball, position.direction_to(attack_target.position), position)
 		attack_cooldown.start()
 		can_attack = false
-	if (state == "Moving" || state == "Looting"):
+	if (state == STATE.MOVING || state == STATE.LOOTING):
 		move(target)
 
 func _on_timer_timeout():

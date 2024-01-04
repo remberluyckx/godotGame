@@ -1,19 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://deb7mumrswplb"]
 
-[ext_resource type="Script" path="res://fireball.gd" id="1_hphx2"]
-[ext_resource type="Texture2D" uid="uid://dxacco0rwclt6" path="res://Assets/Fireball.png" id="2_me2wk"]
+[ext_resource type="Script" path="res://Projectiles/fireball.gd" id="1_x5sty"]
+[ext_resource type="Texture2D" uid="uid://dxacco0rwclt6" path="res://Assets/Fireball.png" id="2_nnqdv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ygbgy"]
 size = Vector2(6.125, 6)
 
 [node name="Fireball" type="Area2D" groups=["Projectiles"]]
 scale = Vector2(4, 4)
-script = ExtResource("1_hphx2")
+script = ExtResource("1_x5sty")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 4.71239
 scale = Vector2(0.2, 0.188)
-texture = ExtResource("2_me2wk")
+texture = ExtResource("2_nnqdv")
 flip_v = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
