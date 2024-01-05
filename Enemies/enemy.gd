@@ -9,7 +9,7 @@ signal drop_loot(item, location)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	health = 5
+	health = 2
 	attack_cooldown = $Timer
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -39,7 +39,6 @@ func die():
 		player.state = STATE.IDLE
 		player.attack_target = null
 		drop_loot.emit(loot, position)
-
 
 func _on_timer_timeout():
 	can_attack = true

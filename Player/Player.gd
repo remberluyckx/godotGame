@@ -1,14 +1,13 @@
 extends Character
 
-#var target = position
 @export var inventory_data: InventoryData
 var Fireball = preload("res://Projectiles/fireball.tscn")
 
 signal toggle_inventory()
 
-
 func _ready():
 	attack_cooldown = $Timer
+	#motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 
 func _input(event):
 	if (event.is_action_pressed("LeftClick")):
