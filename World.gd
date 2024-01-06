@@ -24,19 +24,23 @@ func _on_enemy_2_shoot(projectile, direction, location):
 
 func _on_enemy_drop_loot(item, location):
 	var spawned_loot = item.instantiate()
-	add_child(spawned_loot)
 	spawned_loot.position = location
+	add_child(spawned_loot)	
 
-func spawn_player_projectile(projectile, direction, location):
+func spawn_player_projectile(projectile, target_location, location):
 	var spawned_projectile = projectile.instantiate()
-	spawned_projectile.velocity = direction
+	spawned_projectile.velocity = location.direction_to(target_location)
 	spawned_projectile.add_to_group("PlayerProjectiles")
-	add_child(spawned_projectile)
+	spawned_projectile.target = target_location
 	spawned_projectile.position = location
+	add_child(spawned_projectile)
 	
-func spawn_enemy_projectile(projectile, direction, location):
+	
+func spawn_enemy_projectile(projectile, target_location, location):
 	var spawned_projectile = projectile.instantiate()
-	spawned_projectile.velocity = direction
+	spawned_projectile.velocity = location.direction_to(target_location)
 	spawned_projectile.add_to_group("EnemyProjectiles")
-	add_child(spawned_projectile)
+	spawned_projectile.target = target_location
 	spawned_projectile.position = location
+	add_child(spawned_projectile)
+	

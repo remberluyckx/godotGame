@@ -9,7 +9,7 @@ signal drop_loot(item, location)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	health = 2
+	health = 20
 	attack_cooldown = $Timer
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,21 +18,10 @@ func _process(delta):
 		die()
 	else:
 		if (state == STATE.ATTACKING && can_attack):
-			shoot.emit(Fireball, position.direction_to(attack_target.position), position)
+			attack_target = player
+			shoot.emit(Fireball, attack_target.position, position)
 			attack_cooldown.start()
 			can_attack = false
-
-func _on_area_2d_area_entered(area):
-	if (area.is_in_group("PlayerProjectiles")):
-		area.queue_free()
-		health = health - 1
-		state = STATE.ATTACKING
-		attack_target = player
-
-func _on_area_2d_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton:		
-		player.state = STATE.ATTACKING
-		player.attack_target = get_node(".")
 
 func die():
 		queue_free()	
@@ -42,3 +31,8 @@ func die():
 
 func _on_timer_timeout():
 	can_attack = true
+
+func _on_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton:		
+		player.state = STATE.ATTACKING
+		player.attack_target = get_node(".")

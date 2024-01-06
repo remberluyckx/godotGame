@@ -19,7 +19,7 @@ func _input(event):
 
 func _physics_process(delta):	
 	if (state == STATE.ATTACKING && can_attack):
-		shoot.emit(Fireball, position.direction_to(attack_target.position), position)
+		shoot.emit(Fireball, attack_target.position, position)
 		attack_cooldown.start()
 		can_attack = false
 	if (state == STATE.MOVING || state == STATE.LOOTING):

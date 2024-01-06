@@ -2,16 +2,37 @@ extends Area2D
 
 var velocity = Vector2.RIGHT
 
+enum STATE {IDLE, MOVING, ATTACKING, LOOTING}
+var target
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	#print(position.angle_to(target))
+	#rotate(90)
+	if (target != null):
+		print ("Position", position)
+		print ("Target", target)
+		#print(position.angle_to(target))
+		look_at(target)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	look_at(velocity)
-	position += velocity * 300 * delta
+	position += velocity * 80 * delta
+	#print(target)
 
-
-func _on_area_entered(area):
-	pass
+func _on_body_entered(body):
+	if (body.is_in_group("Obstacles") || body.is_in_group("Tilemap")):
+		print("hit obstacle")
+		queue_free()
+		return
+	if (!body.is_in_group("Player") && is_in_group("PlayerProjectiles")):
+		print("hit enemy")
+		if (body.health != null && body.state != null):
+			body.health = body.health -1
+			body.state = STATE.ATTACKING
+		queue_free()
+	if (!body.is_in_group("Enemies") && is_in_group("EnemyProjectiles")):
+		print("hit player")
+		queue_free()
+	
+	# send signal to body that got hit and handle damage etc there
