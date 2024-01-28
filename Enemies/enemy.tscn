@@ -1,23 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://ioc2crrqkwf8"]
 
 [ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_15sqh"]
-[ext_resource type="Texture2D" uid="uid://bcupwjtqtj1qy" path="res://Assets/icon.svg" id="1_e5cvj"]
+[ext_resource type="Texture2D" uid="uid://bv2m1mm8q8vnh" path="res://Assets/Balrog.png" id="2_f224v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8fi0"]
-size = Vector2(64, 65)
+size = Vector2(70, 71)
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
 input_pickable = true
 script = ExtResource("1_15sqh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_e5cvj")
+texture = ExtResource("2_f224v")
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_w8fi0")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

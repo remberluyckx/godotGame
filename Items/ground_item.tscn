@@ -1,35 +1,47 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6wvwxaok1soc"]
+[gd_scene load_steps=9 format=3 uid="uid://b6wvwxaok1soc"]
 
-[ext_resource type="Texture2D" uid="uid://dq0mcxv7fysqr" path="res://Assets/sword32.png" id="1_kfqj5"]
 [ext_resource type="Script" path="res://Items/ground_item.gd" id="1_uojpy"]
-[ext_resource type="Resource" uid="uid://l80tvau1a6pk" path="res://item/items/crossbow.tres" id="2_l2xe4"]
+[ext_resource type="Script" path="res://item/item_data.gd" id="2_o5cev"]
 [ext_resource type="Script" path="res://inventory/slot_data.gd" id="3_86v27"]
+[ext_resource type="Texture2D" uid="uid://b570t1yp13qjv" path="res://item/new_atlas_texture.tres" id="3_ib0gy"]
+[ext_resource type="Texture2D" uid="uid://eqxnlsobx5bs" path="res://Assets/staff_fireball.png" id="5_xdot4"]
+
+[sub_resource type="Resource" id="Resource_2i35t"]
+script = ExtResource("2_o5cev")
+name = "Poison"
+description = "A vile, deadly poison."
+type = 0
+stackable = true
+texture = ExtResource("3_ib0gy")
 
 [sub_resource type="Resource" id="Resource_i8mjr"]
 script = ExtResource("3_86v27")
-item_data = ExtResource("2_l2xe4")
+item_data = SubResource("Resource_2i35t")
 quantity = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4eoir"]
-size = Vector2(31, 28)
+size = Vector2(31, 39)
 
 [node name="GroundItem" type="Area2D"]
 script = ExtResource("1_uojpy")
 slot_data = SubResource("Resource_i8mjr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 1.5708
-texture = ExtResource("1_kfqj5")
+position = Vector2(0, 4)
+texture = ExtResource("5_xdot4")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = -10.0
-offset_top = -16.0
-offset_right = 15.0
-offset_bottom = -4.0
+offset_left = -15.0
+offset_top = -37.0
+offset_right = 16.0
+offset_bottom = -15.0
 theme_override_font_sizes/normal_font_size = 7
-text = "Sword"
+text = "Staff of fireball"
+fit_content = true
+scroll_active = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_4eoir")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

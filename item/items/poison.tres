@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://cvdspbw34vwja"]
+
+[ext_resource type="Script" path="res://item/item_data.gd" id="1_xkau8"]
+[ext_resource type="Texture2D" uid="uid://peudwff7k0n1" path="res://Assets/Potion.png" id="2_u58ch"]
+
+[resource]
+script = ExtResource("1_xkau8")
+name = ""
+description = ""
+type = 0
+stackable = false
+texture = ExtResource("2_u58ch")

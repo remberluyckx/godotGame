@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cb3lhl0jwg18i"]
+[gd_scene load_steps=29 format=3 uid="uid://cb3lhl0jwg18i"]
 
 [ext_resource type="Script" path="res://World.gd" id="1_5hxya"]
 [ext_resource type="PackedScene" uid="uid://cq68p6f5puo84" path="res://Player/player.tscn" id="1_hdsie"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://cvj3g1jwi7v5e" path="res://Obstacles/rock.tscn" id="6_xbjyy"]
 [ext_resource type="Script" path="res://inventory_interface.gd" id="6_xqgr2"]
 [ext_resource type="PackedScene" uid="uid://o2nwe24ejvxi" path="res://Decorations/candle.tscn" id="7_bg21d"]
+[ext_resource type="Script" path="res://EquipmentInterface.gd" id="10_6up2d"]
+[ext_resource type="PackedScene" uid="uid://bvfwsuqqbtupq" path="res://inventory/slot.tscn" id="11_hpjov"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_n1ssm"]
 tile_data = PackedInt32Array(0, 1900544, 7, 65536, 1900544, 8, 131072, 1900544, 9, 196608, 1900544, 10, 262144, 1900544, 11)
@@ -6274,6 +6276,7 @@ layout_mode = 3
 anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("6_xqgr2")
 
 [node name="PlayerInventory" parent="UI/InventoryInterface" instance=ExtResource("5_pms1s")]
@@ -6282,6 +6285,26 @@ offset_left = 10.0
 offset_top = 10.0
 offset_right = 226.0
 offset_bottom = 90.0
+
+[node name="EquipmentInterface" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -152.0
+offset_right = -112.0
+offset_bottom = 40.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+script = ExtResource("10_6up2d")
+
+[node name="WeaponSlot" parent="UI/EquipmentInterface" instance=ExtResource("11_hpjov")]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.3
@@ -6292,3 +6315,7 @@ blend_mode = 1
 [connection signal="drop_loot" from="Enemy2" to="." method="_on_enemy_drop_loot"]
 [connection signal="shoot" from="Enemy2" to="." method="_on_enemy_2_shoot"]
 [connection signal="shoot" from="Player" to="." method="_on_player_shoot"]
+[connection signal="gui_input" from="UI/InventoryInterface" to="Player" method="_on_inventory_interface_gui_input"]
+[connection signal="mouse_entered" from="UI/InventoryInterface" to="Player" method="_on_inventory_interface_mouse_entered"]
+[connection signal="mouse_exited" from="UI/InventoryInterface" to="Player" method="_on_inventory_interface_mouse_exited"]
+[connection signal="equip_weapon" from="UI/EquipmentInterface" to="Player" method="_on_equipment_interface_equip_weapon"]

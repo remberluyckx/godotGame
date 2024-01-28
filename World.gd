@@ -2,9 +2,11 @@ extends Node2D
 
 @onready var player = $Player
 @onready var inventory_interface = $UI/InventoryInterface
+@onready var equipment_interface = $UI/EquipmentInterface
 
 func _ready():
-	player.toggle_inventory.connect(toggle_inventory_interface)
+	player.toggle_inventory.connect(toggle_inventory_interface) #connect the toggle_inventory signal from the player to the local toggle_inv_interface method
+	player.toggle_equipment.connect(toggle_equipment_interface)
 	inventory_interface.set_player_inventory_data(player.inventory_data)
 	
 func _process(delta):
@@ -12,6 +14,9 @@ func _process(delta):
 
 func toggle_inventory_interface():
 	inventory_interface.visible = not inventory_interface.visible
+
+func toggle_equipment_interface():
+	equipment_interface.visible = not equipment_interface.visible
 
 func _on_player_shoot(projectile, direction, location):
 	spawn_player_projectile(projectile, direction, location)
@@ -34,7 +39,6 @@ func spawn_player_projectile(projectile, target_location, location):
 	spawned_projectile.target = target_location
 	spawned_projectile.position = location
 	add_child(spawned_projectile)
-	
 	
 func spawn_enemy_projectile(projectile, target_location, location):
 	var spawned_projectile = projectile.instantiate()

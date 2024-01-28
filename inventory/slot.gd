@@ -6,6 +6,8 @@ signal slot_clicked(index: int, button: int)
 @onready var quantity_label: Label = $QuantityLabel
 
 func set_slot_data(slot_data: SlotData):
+	if slot_data == null:
+		return
 	var item_data = slot_data.item_data
 	texture_rect.texture = item_data.texture
 	tooltip_text = "%s\n%s" % [item_data.name, item_data.description]

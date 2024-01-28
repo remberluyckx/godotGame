@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://r485nk5pn12o"]
+
+[ext_resource type="Script" path="res://item/item_data.gd" id="1_ylufx"]
+[ext_resource type="Texture2D" uid="uid://eqxnlsobx5bs" path="res://Assets/staff_fireball.png" id="2_7rc2l"]
+
+[resource]
+script = ExtResource("1_ylufx")
+name = "Staff of fireball"
+description = "A staff of fireball"
+type = 0
+stackable = false
+texture = ExtResource("2_7rc2l")

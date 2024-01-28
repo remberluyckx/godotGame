@@ -7,18 +7,12 @@ var target
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#print(position.angle_to(target))
-	#rotate(90)
 	if (target != null):
-		print ("Position", position)
-		print ("Target", target)
-		#print(position.angle_to(target))
 		look_at(target)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	position += velocity * 80 * delta
-	#print(target)
+	position += velocity * 150 * delta
 
 func _on_body_entered(body):
 	if (body.is_in_group("Obstacles") || body.is_in_group("Tilemap")):
@@ -34,5 +28,4 @@ func _on_body_entered(body):
 	if (!body.is_in_group("Enemies") && is_in_group("EnemyProjectiles")):
 		print("hit player")
 		queue_free()
-	
 	# send signal to body that got hit and handle damage etc there
