@@ -2,14 +2,18 @@ extends Character
 
 @onready var myhurtbox = $Area2D/CollisionShape2D
 @onready var player = get_node("../Player")
-var loot = preload("res://Items/ground_item.tscn")
-var Fireball = preload("res://Projectiles/fireball.tscn")
 
-signal drop_loot(item, location)
+var Fireball = preload("res://Projectiles/fireball.tscn")
+var rng = RandomNumberGenerator.new()
+var loot_table = [0,1]
+
+
+
+signal drop_loot(loot_roll, location)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	health = 2
+	health = 1
 	attack_cooldown = $Timer
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,7 +31,9 @@ func die():
 		queue_free()	
 		player.state = STATE.IDLE
 		player.attack_target = null
-		drop_loot.emit(loot, position)
+		var loot_roll = rng.randi_range(0, 1)
+		print("LOOT ROLL", loot_roll)
+		drop_loot.emit(loot_roll, position)
 
 func _on_timer_timeout():
 	can_attack = true

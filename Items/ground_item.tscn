@@ -1,22 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6wvwxaok1soc"]
+[gd_scene load_steps=8 format=3 uid="uid://b6wvwxaok1soc"]
 
 [ext_resource type="Script" path="res://Items/ground_item.gd" id="1_uojpy"]
-[ext_resource type="Script" path="res://item/item_data.gd" id="2_o5cev"]
-[ext_resource type="Script" path="res://inventory/slot_data.gd" id="3_86v27"]
-[ext_resource type="Texture2D" uid="uid://b570t1yp13qjv" path="res://item/new_atlas_texture.tres" id="3_ib0gy"]
+[ext_resource type="Script" path="res://item/item_data.gd" id="2_e7sp7"]
+[ext_resource type="Script" path="res://inventory/slot_data.gd" id="3_fliaa"]
 [ext_resource type="Texture2D" uid="uid://eqxnlsobx5bs" path="res://Assets/staff_fireball.png" id="5_xdot4"]
 
-[sub_resource type="Resource" id="Resource_2i35t"]
-script = ExtResource("2_o5cev")
-name = "Poison"
-description = "A vile, deadly poison."
+[sub_resource type="Resource" id="Resource_w80rt"]
+script = ExtResource("2_e7sp7")
+name = "defaultItem"
+description = "default item"
 type = 0
-stackable = true
-texture = ExtResource("3_ib0gy")
+stackable = false
 
-[sub_resource type="Resource" id="Resource_i8mjr"]
-script = ExtResource("3_86v27")
-item_data = SubResource("Resource_2i35t")
+[sub_resource type="Resource" id="Resource_ux6rt"]
+script = ExtResource("3_fliaa")
+item_data = SubResource("Resource_w80rt")
 quantity = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4eoir"]
@@ -24,7 +22,7 @@ size = Vector2(31, 39)
 
 [node name="GroundItem" type="Area2D"]
 script = ExtResource("1_uojpy")
-slot_data = SubResource("Resource_i8mjr")
+slot_data = SubResource("Resource_ux6rt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 4)

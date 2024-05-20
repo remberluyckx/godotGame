@@ -22,6 +22,6 @@ func on_inventory_interact(inventory_data: InventoryData, index: int, button: in
 			if grabbed_slot_data.item_data.type == Constants.ITEM_TYPE.WEAPON:
 				equipment_interface.set_player_weapon_data(grabbed_slot_data)
 			if grabbed_slot_data.item_data.type == Constants.ITEM_TYPE.CONSUMABLE:
-				print("cliecked on comsum")
+				print("clicked on consume")
 				#equipment_interface.set_player_weapon_data(grabbed_slot_data)
 

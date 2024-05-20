@@ -6252,8 +6252,11 @@ layer_0/tile_data = PackedInt32Array(262149, 589824, 11, 262150, 655360, 11, 262
 [node name="Enemy" parent="." instance=ExtResource("2_vcakk")]
 position = Vector2(284, 129)
 
+[node name="Enemy3" parent="." instance=ExtResource("2_vcakk")]
+position = Vector2(635, 215)
+
 [node name="Enemy2" parent="." instance=ExtResource("2_vcakk")]
-position = Vector2(664, 208)
+position = Vector2(523, 124)
 
 [node name="Rock" parent="." instance=ExtResource("6_xbjyy")]
 position = Vector2(406, 221)
@@ -6312,6 +6315,8 @@ blend_mode = 1
 
 [connection signal="drop_loot" from="Enemy" to="." method="_on_enemy_drop_loot"]
 [connection signal="shoot" from="Enemy" to="." method="_on_enemy_shoot"]
+[connection signal="drop_loot" from="Enemy3" to="." method="_on_enemy_drop_loot"]
+[connection signal="shoot" from="Enemy3" to="." method="_on_enemy_shoot"]
 [connection signal="drop_loot" from="Enemy2" to="." method="_on_enemy_drop_loot"]
 [connection signal="shoot" from="Enemy2" to="." method="_on_enemy_2_shoot"]
 [connection signal="shoot" from="Player" to="." method="_on_player_shoot"]

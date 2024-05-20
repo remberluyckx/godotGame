@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("1_xkau8")
-name = ""
-description = ""
+name = "Poison"
+description = "A vile, deadly poison"
 type = 0
 stackable = false
 texture = ExtResource("2_u58ch")
